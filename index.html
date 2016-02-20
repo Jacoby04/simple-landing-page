@@ -8,6 +8,28 @@
 	
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
 	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="./index.css">
+	
+	<script type = "text/javascript">
+		function writeForm(form) {
+			var formData = [];
+			// Subtract one from lengths to exclude the submit element.
+			for ( var i = 0; i < form.elements.length - 1; i++ ) {
+				if (form.elements[i].type != "fieldset") { // Just want the form input.
+				   var e = form.elements[i];
+				   formData.push(e.id + ": " + e.value);
+				}
+			}
+			document.getElementById('outHeader').innerHTML="Form Output:";
+			document.getElementById('outFirst').innerHTML=formData[0];
+			document.getElementById('outLast').innerHTML=formData[1];
+			document.getElementById('outCompany').innerHTML=formData[2];
+			document.getElementById('outTitle').innerHTML=formData[3];
+			document.getElementById('outCountry').innerHTML=formData[4];
+			document.getElementById('outState').innerHTML=formData[5];
+			document.getElementById('outComments').innerHTML=formData[6];
+		}
+	</script>
 	
 </head>
 <body>
@@ -52,7 +74,7 @@
 				</p>
 			</div>
 			<div class="col-md-6">
-				<form>
+				<form name="value" onsubmit='writeForm(this);'>
 					<fieldset class="form-group">
 						<label for="firstName">First Name:</label>
 						<input id="firstName" type="text" class="form-control" placeholder="First Name">
@@ -458,9 +480,24 @@
 					</fieldset>
 					<fieldset class="form-group">
 						<label for="comments">Additional Comments:</label>
-						<textarea id="comments "class="form-control" rows=""></textarea>
+						<textarea id="comments" class="form-control" rows=""></textarea>
+					</fieldset>
+					<fieldset class="form-group">
+						<input type="submit" class="form-control" value="Submit">
 					</fieldset>
 				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="centerBlock">
+				<h3 id="outHeader"></h3>
+				<p id="outFirst"></p>
+				<p id="outLast"></p>
+				<p id="outCompany"></p>
+				<p id="outTitle"></p>
+				<p id="outCountry"></p>
+				<p id="outState"></p>
+				<p id="outComments"></p>
 			</div>
 		</div>
 	</div>
