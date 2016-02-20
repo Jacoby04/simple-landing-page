@@ -11,7 +11,12 @@
 	<link rel="stylesheet" href="./index.css">
 	
 	<script type = "text/javascript">
-		function writeForm(form) {
+		// I know there are better approaches to doing this (jQuery),
+		// but I have limited experience with it at this time, and I can't
+		// learn it this weekend. Even with JS, there are almost certainly better
+		// ways. Also, the function itself could be cleaned up.
+		function writeForm() {
+			var form = document.getElementById("value");
 			var formData = [];
 			// Subtract one from lengths to exclude the submit element.
 			for ( var i = 0; i < form.elements.length - 1; i++ ) {
@@ -35,14 +40,14 @@
 <body>
 
 	<div class="container">
-		<div class="row">
+		<div class="row rowMargin">
 			<a href="#" class="pull-left"><img src="./R1_Logo_Horizontal.png"></a>
 		</div>
-		<div class="row">
+		<div class="row rowMargin">
 			<img src="./laundrybanner.jpg" alt="Banner" height="initial" width="100%">
 		</div>
-		<div class="row">
-			<div class="col-md-6">
+		<div class="row rowMargin">
+			<div class="col-sm-6 col-md-6 col-lg-6">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper 
 					velit aliquet leo fermentum dignissim. Etiam rutrum ut diam euismod venenatis. 
@@ -73,24 +78,24 @@
 					id condimentum. Duis pulvinar quam sit amet pellentesque varius. 
 				</p>
 			</div>
-			<div class="col-md-6">
-				<form name="value" onsubmit='writeForm(this);'>
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<form name="value" id="value">
 					<fieldset class="form-group">
 						<label for="firstName">First Name:</label>
-						<input id="firstName" type="text" class="form-control" placeholder="First Name">
+						<input id="firstName" type="text" class="form-control" placeholder="First Name" required>
 					</fieldset>
 					<fieldset class="form-group">
 						<label for="lastName">Last Name:</label>
-						<input id="lastName" type="text" class="form-control" placeholder="Last Name">
+						<input id="lastName" type="text" class="form-control" placeholder="Last Name" required>
 					</fieldset>
 					<fieldset class="form-group">
 						<label for="company">Company:</label>
-						<input id="company" type="text" class="form-control" placeholder="Company">
+						<input id="company" type="text" class="form-control" placeholder="Company" required>
 					</fieldset>
 					<fieldset class="form-group">
 						<label for="title">Title:</label>
 						<select id="title" class="form-control">
-						  <option value="Please select">Please select</option>
+						  <option value="">Please select</option>
 						  <option value="Ms">Ms</option>
 						  <option value="Miss">Miss</option>
 						  <option value="Mrs">Mrs</option>
@@ -102,8 +107,8 @@
 					</fieldset>
 					<fieldset class="form-group">
 						<label for="country">Country:</label>
-						<select id="country" class="form-control">
-							<option value="Please select">Please select</option>
+						<select id="country" class="form-control" required>
+							<option value="">Please select</option>
 							<option value="United States">United States</option>
 							<option value="United Kingdom">United Kingdom
 							</option>
@@ -423,7 +428,7 @@
 					<fieldset class="form-group">
 						<label for="state">State:</label>
 						<select id="state" class="form-control">
-							<option value="Please select">Please select</option>
+							<option value="">Please select</option>
 							<option value="Alabama">Alabama</option>
 							<option value="Alaska">Alaska</option>
 							<option value="Arizona">Arizona</option>
@@ -483,12 +488,12 @@
 						<textarea id="comments" class="form-control" rows=""></textarea>
 					</fieldset>
 					<fieldset class="form-group">
-						<input type="submit" class="form-control" value="Submit">
+						<input type="button" class="form-control" value="Submit" onclick="writeForm()">
 					</fieldset>
 				</form>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row rowMargin">
 			<div class="centerBlock">
 				<h3 id="outHeader"></h3>
 				<p id="outFirst"></p>
@@ -501,8 +506,6 @@
 			</div>
 		</div>
 	</div>
-
-
 
 	<!-- Scripts for frameworks, libraries, and basic functionality go here. -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

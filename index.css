@@ -1,4 +1,9 @@
+/* Used for centering a nested div.*/
 .centerBlock {
 	display: table;
 	margin: 0 auto;
+}
+
+.rowMargin {
+	margin-top: 15px;
 }
